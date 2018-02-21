@@ -76,7 +76,7 @@ function main () {
 	// TODO: fill the blank based on the theme you have choosen
 	const initialState = {
 		example: 'Hello custom element',
-		resource: {},
+		counter: 0,
 		generators: [],
 		story: []
 	};
