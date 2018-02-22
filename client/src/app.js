@@ -87,9 +87,12 @@ function main () {
 
 	// define web components
 	window.customElements.define('component-example', ExampleComponent(store));
+	// no longer used
 	window.customElements.define('game-button', ButtonComponent(store));
 	window.customElements.define('game-counter', CounterComponent(store));
+	// lab 3
 	window.customElements.define('game-generator', GeneratorComponent(store));
+	// homework 1
 	window.customElements.define('game-story-book', StoryBookComponent(store));
 
 	// For ease of debugging purpose, we will expose the critical store under window
