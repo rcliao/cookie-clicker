@@ -78,7 +78,7 @@ function main () {
 		example: 'Hello custom element',
 		counter: 0,
 		generators: [],
-		story: []
+		stories: []
 	};
 
 	// initialize store

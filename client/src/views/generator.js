@@ -3,6 +3,7 @@ export default function (store) {
 		constructor () {
 			super();
 			this.store = store;
+			this.onStateChange = this.handleStateChange.bind(this);
 
 			// TODO: render generator initial view
 
@@ -10,6 +11,17 @@ export default function (store) {
 
 			// TODO: add click event
 
+		}
+
+		handleStateChange (newState) {
+		}
+
+		connectedCallback () {
+			this.store.subscribe(this.onStateChange);
+		}
+
+		disconnectedCallback () {
+			this.store.unsubscribe(this.onStateChange);
 		}
 	};
 }
