@@ -5,7 +5,7 @@ import * as mock from './mock';
 
 test('should be able to set example state from "EXAMPLE_MUTATION" action', () => {
 	const action = {
-		type: constants.EXAMPLE,
+		type: constants.actions.EXAMPLE,
 		payload: 'mutated'
 	};
 	const initialState = {
