@@ -5,3 +5,4 @@ matrix:
         - "8"
       before_script:
         - cd client
+    - language: java
