@@ -19,3 +19,5 @@ src/main/webapp/js/app.bundle.js
 src/main/webapp/js/app.bundle.js.map
 
 tags*
+
+dest/
