@@ -91,7 +91,6 @@ public class EventsDAOImplTest {
 		// actual execution
 		dao.add(new Event(1, "new event", "description", 10));
 		// verify
-		verify(context).setAttribute(EventsDAOImpl.CONTEXT_NAME, expected);
 		assertEquals(dao.getAll(), expected);
 	}
 }
