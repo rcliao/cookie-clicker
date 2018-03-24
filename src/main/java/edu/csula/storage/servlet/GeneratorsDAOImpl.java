@@ -31,7 +31,7 @@ import edu.csula.models.Generator;
  */
 public class GeneratorsDAOImpl implements GeneratorsDAO {
 	private final ServletContext context;
-	private static final String CONTEXT_NAME = "generators";
+	protected static final String CONTEXT_NAME = "generators";
 
 	public GeneratorsDAOImpl(ServletContext context) {
 		this.context = context;

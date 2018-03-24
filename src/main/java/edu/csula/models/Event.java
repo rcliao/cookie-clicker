@@ -35,7 +35,9 @@ public class Event {
 			return false;
 		}
 		final Event event = (Event) obj;
-		return this.id == event.id;
+		return this.id == event.id && this.name.equals(event.name) &&
+			this.description.equals(event.description) &&
+			this.triggerAt == event.triggerAt;
 	}
 
 	@Override
