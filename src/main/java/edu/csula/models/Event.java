@@ -28,4 +28,18 @@ public class Event {
 	public int getTriggerAt() {
 		return triggerAt;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		final Event event = (Event) obj;
+		return this.id == event.id;
+	}
+
+	@Override
+	public int hashCode() {
+		return this.id;
+	}
 }
