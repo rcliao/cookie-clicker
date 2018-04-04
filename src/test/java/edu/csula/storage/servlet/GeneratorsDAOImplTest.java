@@ -36,7 +36,7 @@ public class GeneratorsDAOImplTest {
 
 		// assert and verify
 		verify(context).getAttribute(GeneratorsDAOImpl.CONTEXT_NAME);
-		assertEquals(actual.size(), 1);
+		assertEquals(1, actual.size());
 	}
 
 	@Test
@@ -46,7 +46,7 @@ public class GeneratorsDAOImplTest {
 		Collection<Generator> actual = dao.getAll();
 
 		// should return an empty list
-		assertEquals(actual.size(), 0);
+		assertEquals(0, actual.size());
 	}
 
 	@Test
@@ -62,7 +62,7 @@ public class GeneratorsDAOImplTest {
 		// assert and verify
 		verify(context).getAttribute(GeneratorsDAOImpl.CONTEXT_NAME);
 		assertTrue(actual.isPresent());
-		assertEquals(actual.get(), new Generator(1, "name", "desc", 10, 10, 0));
+		assertEquals(new Generator(1, "name", "desc", 10, 10, 0), actual.get());
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class GeneratorsDAOImplTest {
 		// assert and verify
 		verify(context).getAttribute(GeneratorsDAOImpl.CONTEXT_NAME);
 		assertTrue(actualEvent.isPresent());
-		assertEquals(actualEvent.get(), new Generator(1, "new name", "new desc", 20, 50, 10));
+		assertEquals(new Generator(1, "new name", "new desc", 20, 50, 10), actualEvent.get());
 	}
 
 	@Test
@@ -92,6 +92,6 @@ public class GeneratorsDAOImplTest {
 		// actual execution
 		dao.add(new Generator(1, "name", "desc", 10, 10, 0));
 		// verify
-		assertEquals(dao.getAll(), expected);
+		assertEquals(expected, dao.getAll());
 	}
 }
