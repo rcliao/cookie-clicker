@@ -1,6 +1,6 @@
 package edu.csula.storage;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import edu.csula.models.Event;
@@ -13,7 +13,7 @@ public interface EventsDAO {
 	/**
 	 * Find all events given storage
 	 */
-	public Collection<Event> getAll();
+	public List<Event> getAll();
 	/**
 	 * Find certain event given its id
 	 */
