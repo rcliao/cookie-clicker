@@ -36,7 +36,7 @@ public class EventsDAOImplTest {
 
 		// assert and verify
 		verify(context).getAttribute(EventsDAOImpl.CONTEXT_NAME);
-		assertEquals(actualEvents.size(), 1);
+		assertEquals(1, actualEvents.size());
 	}
 
 	@Test
@@ -46,7 +46,7 @@ public class EventsDAOImplTest {
 		Collection<Event> actualEvents = dao.getAll();
 
 		// should return an empty list
-		assertEquals(actualEvents.size(), 0);
+		assertEquals(0, actualEvents.size());
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class EventsDAOImplTest {
 		// assert and verify
 		verify(context).getAttribute(EventsDAOImpl.CONTEXT_NAME);
 		assertTrue(actualEvent.isPresent());
-		assertEquals(actualEvent.get(), new Event(1, "new name", "description", 20));
+		assertEquals(new Event(1, "new name", "description", 20), actualEvent.get());
 	}
 
 	@Test
@@ -91,6 +91,6 @@ public class EventsDAOImplTest {
 		// actual execution
 		dao.add(new Event(1, "new event", "description", 10));
 		// verify
-		assertEquals(dao.getAll(), expected);
+		assertEquals(expected, dao.getAll());
 	}
 }
