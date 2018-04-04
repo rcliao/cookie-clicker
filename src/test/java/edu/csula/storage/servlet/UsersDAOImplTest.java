@@ -29,7 +29,7 @@ public class UsersDAOImplTest {
 		// set up
 		when(context.getAttribute(UsersDAOImpl.CONTEXT_NAME)).thenReturn(null);
 		// verify
-		assertEquals(dao.authenticate("admin", "cs3220password"), true);
+		assertEquals(true, dao.authenticate("admin", "cs3220password"));
 		User authenticatedUser = new User(0, "admin", "cs3220password");
 		// should set the new user into the HttpSession
 		verify(context).setAttribute(UsersDAOImpl.CONTEXT_NAME, authenticatedUser);
@@ -40,17 +40,17 @@ public class UsersDAOImplTest {
 		// set up
 		when(context.getAttribute(UsersDAOImpl.CONTEXT_NAME)).thenReturn(null);
 		// verify
-		assertEquals(dao.authenticate("admin", "cs3220password"), true);
+		assertEquals(true, dao.authenticate("admin", "cs3220password"));
 		User authenticatedUser = new User(0, "admin", "cs3220password");
 		// should set the new user into the HttpSession
 		verify(context).setAttribute(UsersDAOImpl.CONTEXT_NAME, authenticatedUser);
 		// verify
-		assertEquals(dao.getAuthenticatedUser().get(), authenticatedUser);
+		assertEquals(authenticatedUser, dao.getAuthenticatedUser().get());
 	}
 
 	@Test
 	public void logout() throws Exception {
-		assertEquals(dao.authenticate("admin", "cs3220password"), true);
+		assertEquals(true, dao.authenticate("admin", "cs3220password"));
 		dao.logout();
 		verify(context).invalidate();
 		assertFalse(dao.getAuthenticatedUser().isPresent());
