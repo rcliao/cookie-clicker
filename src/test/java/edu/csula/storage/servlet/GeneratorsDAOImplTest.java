@@ -1,6 +1,7 @@
 package edu.csula.storage.servlet;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -11,16 +12,25 @@ import edu.csula.storage.GeneratorsDAO;
 
 import org.junit.*;
 
+import org.mockito.stubbing.Answer;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class GeneratorsDAOImplTest {
 	private ServletContext context;
 	private GeneratorsDAO dao;
+	private List<Generator> list;
 
 	@Before
 	public void setup() {
 		context = mock(ServletContext.class);
+		doAnswer((Answer) invocation -> {
+			return list;
+		}).when(context).getAttribute(eq(GeneratorsDAOImpl.CONTEXT_NAME));
+		doAnswer((Answer) invocation -> {
+			list = (List<Generator>) invocation.getArgument(1);
+			return null;
+		}).when(context).setAttribute(eq(GeneratorsDAOImpl.CONTEXT_NAME), any(List.class));
 		dao = new GeneratorsDAOImpl(context);
 	}
 
@@ -68,17 +78,13 @@ public class GeneratorsDAOImplTest {
 	@Test
 	public void set() throws Exception {
 		// set up initial mock state
-		Collection<Generator> mock = new ArrayList<>();
-		mock.add(new Generator(1, "name", "desc", 10, 10, 0));
-		when(context.getAttribute(GeneratorsDAOImpl.CONTEXT_NAME)).thenReturn(mock);
-
+		dao.add(new Generator(1, "name", "desc", 10, 10, 0));
 
 		// actual method execution
 		dao.set(1, new Generator(1, "new name", "new desc", 20, 50, 10));
 		Optional<Generator> actualEvent = dao.getById(1);
 
 		// assert and verify
-		verify(context).getAttribute(GeneratorsDAOImpl.CONTEXT_NAME);
 		assertTrue(actualEvent.isPresent());
 		assertEquals(new Generator(1, "new name", "new desc", 20, 50, 10), actualEvent.get());
 	}
@@ -86,7 +92,6 @@ public class GeneratorsDAOImplTest {
 	@Test
 	public void add() throws Exception {
 		// set up
-		when(context.getAttribute(GeneratorsDAOImpl.CONTEXT_NAME)).thenReturn(null);
 		Collection<Generator> expected = new ArrayList<>();
 		expected.add(new Generator(1, "name", "desc", 10, 10, 0));
 		// actual execution
