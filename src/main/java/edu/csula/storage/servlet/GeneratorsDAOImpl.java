@@ -1,6 +1,7 @@
 package edu.csula.storage.servlet;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -38,7 +39,7 @@ public class GeneratorsDAOImpl implements GeneratorsDAO {
 	}
 
 	@Override
-	public Collection<Generator> getAll() {
+	public List<Generator> getAll() {
 		// TODO: get a list of generators from the context
 		return new ArrayList<>();
 	}
