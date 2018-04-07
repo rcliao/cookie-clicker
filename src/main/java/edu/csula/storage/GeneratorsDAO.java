@@ -26,4 +26,8 @@ public interface GeneratorsDAO {
 	 * addEvent adds a new generator to database storage
 	 */
 	public void add(Generator generator);
+	/**
+	 * remove a single generator given id
+	 */
+	public void remove(int id);
 }

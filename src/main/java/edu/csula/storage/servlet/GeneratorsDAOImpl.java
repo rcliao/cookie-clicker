@@ -59,4 +59,9 @@ public class GeneratorsDAOImpl implements GeneratorsDAO {
 	public void add(Generator generator) {
 		// TODO: add a new generator to the context
 	}
+
+	@Override
+	public void remove(int id) {
+		// TODO: remove a single generator from the context
+	}
 }

@@ -2,7 +2,6 @@ package edu.csula.storage.servlet;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collection;
 import java.util.Optional;
 
 import javax.servlet.ServletContext;
@@ -37,12 +36,12 @@ public class GeneratorsDAOImplTest {
 	@Test
 	public void getAll() throws Exception {
 		// set up initial mock state
-		Collection<Generator> mockList = new ArrayList<>();
+		List<Generator> mockList = new ArrayList<>();
 		mockList.add(new Generator(1, "name", "desc", 10, 10, 0));
 		when(context.getAttribute(GeneratorsDAOImpl.CONTEXT_NAME)).thenReturn(mockList);
 
 		// actual method execution
-		Collection<Generator> actual = dao.getAll();
+		List<Generator> actual = dao.getAll();
 
 		// assert and verify
 		verify(context).getAttribute(GeneratorsDAOImpl.CONTEXT_NAME);
@@ -53,7 +52,7 @@ public class GeneratorsDAOImplTest {
 	public void getAllWhenNull() throws Exception {
 		when(context.getAttribute(GeneratorsDAOImpl.CONTEXT_NAME)).thenReturn(null);
 		// actual method execution
-		Collection<Generator> actual = dao.getAll();
+		List<Generator> actual = dao.getAll();
 
 		// should return an empty list
 		assertEquals(0, actual.size());
@@ -62,7 +61,7 @@ public class GeneratorsDAOImplTest {
 	@Test
 	public void getById() throws Exception {
 		// set up initial mock state
-		Collection<Generator> mock = new ArrayList<>();
+		List<Generator> mock = new ArrayList<>();
 		mock.add(new Generator(1, "name", "desc", 10, 10, 0));
 		when(context.getAttribute(GeneratorsDAOImpl.CONTEXT_NAME)).thenReturn(mock);
 
@@ -92,11 +91,19 @@ public class GeneratorsDAOImplTest {
 	@Test
 	public void add() throws Exception {
 		// set up
-		Collection<Generator> expected = new ArrayList<>();
+		List<Generator> expected = new ArrayList<>();
 		expected.add(new Generator(1, "name", "desc", 10, 10, 0));
 		// actual execution
 		dao.add(new Generator(1, "name", "desc", 10, 10, 0));
 		// verify
 		assertEquals(expected, dao.getAll());
+	}
+
+	@Test
+	public void remove() throws Exception {
+		dao.add(new Generator(1, "name", "desc", 10, 10, 0));
+		assertEquals(1, dao.getAll().size());
+		dao.remove(1);
+		assertEquals(0, dao.getAll().size());
 	}
 }
