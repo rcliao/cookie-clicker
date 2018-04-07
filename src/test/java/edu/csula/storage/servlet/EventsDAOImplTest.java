@@ -99,4 +99,11 @@ public class EventsDAOImplTest {
 		// verify
 		assertEquals(expected, dao.getAll());
 	}
+
+	@Test
+	public void remove() throws Exception {
+		dao.add(new Event(1, "new event", "description", 10));
+		dao.remove(1);
+		assertEquals(0, dao.getAll().size());
+	}
 }
