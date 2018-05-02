@@ -56,18 +56,18 @@ public class EventsDAOImplTest {
 
 	@Test
 	public void getById() throws Exception {
-		ResultSet getAllResultSet = mock(ResultSet.class);
-		when(getAllResultSet.next()).thenReturn(true).thenReturn(false);
-		when(getAllResultSet.getInt(1)).thenReturn(1);
-		when(getAllResultSet.getString(2)).thenReturn("name");
-		when(getAllResultSet.getString(3)).thenReturn("desc");
-		when(getAllResultSet.getInt(4)).thenReturn(10);
+		ResultSet resultSet = mock(ResultSet.class);
+		when(resultSet.next()).thenReturn(true).thenReturn(false);
+		when(resultSet.getInt(1)).thenReturn(1);
+		when(resultSet.getString(2)).thenReturn("name");
+		when(resultSet.getString(3)).thenReturn("desc");
+		when(resultSet.getInt(4)).thenReturn(10);
 
-		Statement getAllStatement = mock(Statement.class); 
-		when(getAllStatement.executeQuery(EventsDAOImpl.getAllQuery)).thenReturn(getAllResultSet);
+		PreparedStatement getAllStatement = mock(PreparedStatement.class); 
+		when(getAllStatement.executeQuery()).thenReturn(resultSet);
 
 		Connection getAllConnection = mock(Connection.class);
-		when(getAllConnection.createStatement()).thenReturn(getAllStatement);
+		when(getAllConnection.prepareStatement(EventsDAOImpl.addQuery)).thenReturn(getAllStatement);
 
 		context = mock(Database.class);
 		when(context.getConnection()).thenReturn(getAllConnection);
