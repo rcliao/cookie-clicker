@@ -58,14 +58,14 @@ public class GeneratorsDAOImplTest {
 
 	@Test
 	public void getById() throws Exception {
-		ResultSet getAllResultSet = mock(ResultSet.class);
-		when(getAllResultSet.next()).thenReturn(true).thenReturn(false);
-		when(getAllResultSet.getInt(1)).thenReturn(1);
-		when(getAllResultSet.getString(2)).thenReturn("Grandma");
-		when(getAllResultSet.getString(3)).thenReturn("desc");
-		when(getAllResultSet.getInt(4)).thenReturn(5);
-		when(getAllResultSet.getInt(5)).thenReturn(10);
-		when(getAllResultSet.getInt(6)).thenReturn(10);
+		ResultSet resultSet = mock(ResultSet.class);
+		when(resultSet.next()).thenReturn(true).thenReturn(false);
+		when(resultSet.getInt(1)).thenReturn(1);
+		when(resultSet.getString(2)).thenReturn("Grandma");
+		when(resultSet.getString(3)).thenReturn("desc");
+		when(resultSet.getInt(4)).thenReturn(5);
+		when(resultSet.getInt(5)).thenReturn(10);
+		when(resultSet.getInt(6)).thenReturn(10);
 
 		PreparedStatement getAllStatement = mock(PreparedStatement.class); 
 		when(getAllStatement.executeQuery()).thenReturn(resultSet);
