@@ -36,6 +36,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     // mockito for mocking utilities methods
     testCompile "org.mockito:mockito-core:2.+"
+    testCompile group: 'org.glassfish.jersey.test-framework', name: 'jersey-test-framework-core', version: '2.25.1'
+    testCompile group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: '2.25.1'
 }
 
 gretty {
