@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.inject.Inject;
+
 import edu.csula.storage.EventsDAO;
 import edu.csula.storage.Database;
 import edu.csula.models.Event;
 
 public class EventsDAOImpl implements EventsDAO {
+	@Inject
 	private final Database context;
 
 	// TODO: fill the Strings with the SQL queries as "prepated statements" and

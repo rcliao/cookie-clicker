@@ -26,6 +26,9 @@ dependencies {
     // JAX-RS -- Jersey Jackson
     compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.25.1'
 
+    // for dependency injection
+    compile group: 'org.glassfish.hk2', name: 'hk2', version: '2.5.0-b61'
+
     // GSON
     compile 'com.google.code.gson:gson:2.8.2'
 
